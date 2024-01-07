@@ -1,12 +1,17 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]; then
+	echo "Please run as root"
+	exit 1
+fi
+
 echo "Welcome to typewriter.sh, a SMUT shim-building automation tool"
 echo "Made by rainestorme"
 
 echo "Before you start, confirm that you have the following files in the /typewriter folder:"
 echo " - raw_shim.bin - your raw shim for the board you want to build for"
 echo " - reco_image.bin - your v105 recovery image for the board you want to build for"
-echo "Also make sure this script was run as root! (TODO add root check)"
+echo "Also make sure this script was run as root!"
 echo " Press enter to continue, Ctrl+C to exit"
 read -r
 
